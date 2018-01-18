@@ -1,1 +1,0 @@
-echo "# training-dotnet"
