@@ -6,18 +6,16 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using training.Controller;
 using training.Repositories;
 
 namespace training
 {
-    public partial class MovieAdd : System.Web.UI.Page
+    public partial class MovieAdd : BasePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                txtDate.Text = DateTime.Now.ToString("yyyy/MM/dd");
-            }
+            
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)
@@ -65,7 +63,7 @@ namespace training
                 string coverImg = folderImg + fileNameExt;
 
                 int duration = int.Parse(txtDuration.Text);
-                DateTime releaseDate = DateTime.Parse(txtDate.Text);
+                DateTime releaseDate = DateTime.Parse(txtDate.Value);
                 MovieRepository movieRepo = new MovieRepository();
                 MovieModel data = new MovieModel()
                 {
@@ -86,16 +84,6 @@ namespace training
             {
                 showAlertError("alertErr", ex.Message);
             }
-        }
-
-        void showAlertSuccess(string key, string msg)
-        {
-            ClientScript.RegisterStartupScript(GetType(), key, "showAlertSuccess('" + msg + "');", true);
-        }
-
-        void showAlertError(string key, string msg)
-        {
-            ClientScript.RegisterStartupScript(GetType(), key, "showAlertError('" + msg + "');", true);
         }
     }
 }
