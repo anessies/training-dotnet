@@ -1,18 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="MovieAdd.aspx.cs" Inherits="training.MovieAdd" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <style>
-        div#success-alert, div#danger-alert {
-            width: 80%;
-            position: fixed;
-            margin: 5% auto;
-            left: 0;
-            right: 0;
-            display: none;
-        }
-    </style>
-    <div class="alert alert-success" id="success-alert"></div>
-    <div class="alert alert-danger" id="danger-alert"></div>
     <div class="row">
         <div class="col">
             <div class="panel panel-default" style="margin-top: 15px">
@@ -46,8 +34,7 @@
             </div>
         </div>
     </div>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" />
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
+    
     <script type="text/javascript">
         function submitClick() {
             if (!$('#MainContent_txtTitle').val()) {
@@ -67,22 +54,5 @@
                 return false;
             }
         }
-        function showAlertSuccess(msg) {
-            $("#success-alert").text(msg);
-            $("#success-alert").fadeTo(2000, 500).slideUp(500, function () {
-                $("#success-alert").slideUp(500);
-            });
-        }
-        function showAlertError(msg) {
-            $("#danger-alert").text(msg);
-            $("#danger-alert").fadeTo(2000, 500).slideUp(500, function () {
-                $("#danger-alert").slideUp(500);
-            });
-        }
-        $(document).ready(function () {
-            $("input[id*='txtDate']").datepicker({
-                format: "yyyy/mm/dd"
-            });
-        });
     </script>
 </asp:Content>

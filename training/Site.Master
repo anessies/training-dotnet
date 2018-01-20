@@ -12,9 +12,32 @@
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
 
-    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-
+    <style type="text/css">
+        div#success-alert, div#danger-alert {
+            width: 80%;
+            position: fixed;
+            margin: 5% auto;
+            left: 0;
+            right: 0;
+            display: none;
+        }
+    </style>
+    <script type="text/javascript">
+        function showAlertSuccess(msg) {
+            $("#success-alert").text(msg);
+            $("#success-alert").fadeTo(2000, 500).slideUp(500, function () {
+                $("#success-alert").slideUp(500);
+            });
+        }
+        function showAlertError(msg) {
+            $("#danger-alert").text(msg);
+            $("#danger-alert").fadeTo(2000, 500).slideUp(500, function () {
+                $("#danger-alert").slideUp(500);
+            });
+        }
+    </script>
 </head>
 <body>
     <form runat="server">
@@ -38,7 +61,6 @@
                 <%--Site Scripts--%>
             </Scripts>
         </asp:ScriptManager>
-
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
@@ -58,6 +80,8 @@
             </div>
         </div>
         <div class="container body-content">
+            <div class="alert alert-success" id="success-alert"></div>
+            <div class="alert alert-danger" id="danger-alert"></div>
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <hr />
@@ -65,7 +89,16 @@
                 <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>
             </footer>
         </div>
-
     </form>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" />
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("input[id*='txtDate']").datepicker({
+                format: "yyyy/mm/dd"
+            });
+        });
+    </script>
 </body>
+
 </html>
