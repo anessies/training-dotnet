@@ -23,10 +23,11 @@ namespace training.Repositories
             return ds;
         }
 
-        public void insertMovie()
+        public void insertMovie(MovieModel data)
         {
             SqlConnection conn = new SqlConnection(connStr);
-            string cmdText = "INSERT INTO"; // TODO :: Insert data
+            string cmdTextRaw = "INSERT INTO [movie] VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', GETDATE(), GETDATE())";
+            string cmdText = string.Format(cmdTextRaw, data.title, data.coverImg, data.releaseDate, data.genre, data.duration);
             SqlCommand cmd = new SqlCommand(cmdText, conn);
             conn.Open();
             cmd.ExecuteNonQuery();
