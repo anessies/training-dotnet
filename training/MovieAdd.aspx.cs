@@ -15,10 +15,7 @@ namespace training
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                txtDate.Text = DateTime.Now.ToString("yyyy/MM/dd");
-            }
+            
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)
@@ -66,7 +63,7 @@ namespace training
                 string coverImg = folderImg + fileNameExt;
 
                 int duration = int.Parse(txtDuration.Text);
-                DateTime releaseDate = DateTime.Parse(txtDate.Text);
+                DateTime releaseDate = DateTime.Parse(txtDate.Value);
                 MovieRepository movieRepo = new MovieRepository();
                 MovieModel data = new MovieModel()
                 {

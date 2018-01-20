@@ -49,10 +49,31 @@ namespace training.Repositories
             string cmdText = "DELETE FROM [movie] WHERE id = " + id;
             callDb(cmdText);
         }
+
+        public DataSet getMovieById(int id)
+        {
+            string cmdText = "SELECT * FROM [movie] WHERE id = " + id;
+            return callDbWithValue(cmdText);
+        }
+
+        public void updateMovie(MovieModel data)
+        {
+            string cmdTextRaw = "UPDATE [movie] SET " +
+                "title = '{0}', " +
+                "coverImg = '{1}', " +
+                "releaseDate = '{2}', " +
+                "genre = '{3}', " +
+                "duration = {4}, " +
+                "modifyDate = GETDATE() " +
+                "WHERE id = {5} ";
+            string cmdText = string.Format(cmdTextRaw, data.title, data.coverImg, data.releaseDate, data.genre, data.duration, data.id);
+            callDb(cmdText);
+        }
     }
 
     public class MovieModel
     {
+        public int id { get; set; }
         public string title { get; set; }
         public int duration { get; set; }
         public DateTime releaseDate { get; set; }
