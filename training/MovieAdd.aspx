@@ -2,8 +2,9 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="row">
-        <div class="col">
-            <div class="panel panel-default" style="margin-top: 15px">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="panel panel-default">
                 <div class="panel-heading">Movie Form</div>
                 <div class="panel-body">
                     <div class="form-group">
@@ -12,13 +13,18 @@
                     </div>
                     <div class="form-group">
                         <asp:Label Text="เช้าฉายเมื่อ" Font-Bold="true" runat="server" />
-                        <asp:TextBox ID="txtDate" ReadOnly="true" runat="server" CssClass="form-control" Style="background-color: unset" />
+                        <div class='input-group date' id='dtPicker'>
+                            <input type='text' class="form-control" id="txtDate" runat="server" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
                     </div>
                     <div class="form-group">
                         <asp:Label Text="หมวดหมู่" Font-Bold="true" runat="server" />
                         <asp:DropDownList runat="server" ID="ddlGenre" CssClass="form-control">
-                            <asp:ListItem Text="แอนิเมชัน" />
-                            <asp:ListItem Text="แอคชั่น" />
+                            <asp:ListItem Text="แอนิเมชัน" Value="แอนิเมชัน" />
+                            <asp:ListItem Text="แอคชั่น" Value="แอคชั่น" />
                         </asp:DropDownList>
                     </div>
                     <div class="form-group">
@@ -33,9 +39,16 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-3"></div>
     </div>
-    
+
     <script type="text/javascript">
+        $(function () {
+            $('#dtPicker').datetimepicker({
+                format: 'YYYY/MM/DD',
+                defaultDate: new Date(),
+            });
+        });
         function submitClick() {
             if (!$('#MainContent_txtTitle').val()) {
                 showAlertError('กรุณากรอกข้อมูลชื่อภาพยนต์');

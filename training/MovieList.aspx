@@ -16,6 +16,16 @@
                     <asp:BoundField DataField="releaseDate" HeaderText="เข้าฉายเมื่อ" />
                     <asp:BoundField DataField="genre" HeaderText="หมวดหมู่" />
                     <asp:BoundField DataField="duration" HeaderText="ความยาม (นาที)" />
+                    <asp:TemplateField HeaderText="แก้ไข">
+                        <ItemTemplate>
+                            <asp:Button
+                                CssClass="btn btn-primary"
+                                OnClick="btnEdit_Click"
+                                Text="Edit"
+                                ID="btnEdit"
+                                runat="server" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
                     <asp:TemplateField HeaderText="ลบ">
                         <ItemTemplate>
                             <asp:Button
