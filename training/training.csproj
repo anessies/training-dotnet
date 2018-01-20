@@ -143,6 +143,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="MovieAdd.aspx" />
     <Content Include="MovieList.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -204,6 +205,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="MovieAdd.aspx.cs">
+      <DependentUpon>MovieAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MovieAdd.aspx.designer.cs">
+      <DependentUpon>MovieAdd.aspx</DependentUpon>
     </Compile>
     <Compile Include="MovieList.aspx.cs">
       <DependentUpon>MovieList.aspx</DependentUpon>
