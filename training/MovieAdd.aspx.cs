@@ -15,10 +15,7 @@ namespace training
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                txtDate.Text = DateTime.Now.ToString("yyyy/MM/dd");
-            }
+
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)
@@ -40,6 +37,12 @@ namespace training
                 if (!int.TryParse(txtDuration.Text, out numDuration))
                 {
                     showAlertError("alertDurNotNumErr", "กรุณากรอกความยาว(นาที) ให้เป็นตัวเลขเท่านั้น");
+                    return;
+                }
+                numDuration = int.Parse(txtDuration.Text);
+                if (numDuration > 200)
+                {
+                    showAlertError("alertMoreThen200Min", "กรุณากรอกความยาว(นาที) น้อยกว่า 200 นาที");
                     return;
                 }
                 if (!fuCoverImg.HasFile)
@@ -66,7 +69,7 @@ namespace training
                 string coverImg = folderImg + fileNameExt;
 
                 int duration = int.Parse(txtDuration.Text);
-                DateTime releaseDate = DateTime.Parse(txtDate.Text);
+                DateTime releaseDate = DateTime.Parse(txtDate.Value);
                 MovieRepository movieRepo = new MovieRepository();
                 MovieModel data = new MovieModel()
                 {

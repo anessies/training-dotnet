@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="row">
-        <div class="col" style="padding-top: 20px">
+        <div class="col">
             <asp:GridView ID="gvMovie" BorderWidth="0" GridLines="None" runat="server"
                 AutoGenerateColumns="false" CssClass="table">
                 <Columns>
