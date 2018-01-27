@@ -11,10 +11,34 @@
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
-
-    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <link rel="stylesheet" href="Content/bootstrap-datetimepicker.css" />
+    <link rel="stylesheet" href="Content/bootstrap.css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-
+    <style>
+        div#success-alert, div#danger-alert {
+            width: 80%;
+            position: fixed;
+            margin: 5% auto;
+            left: 0;
+            right: 0;
+            display: none;
+            z-index: 100;
+        }
+    </style>
+    <script type="text/javascript">
+        function showAlertSuccess(msg) {
+            $("#success-alert").text(msg);
+            $("#success-alert").fadeTo(2000, 500).slideUp(500, function () {
+                $("#success-alert").slideUp(500);
+            });
+        }
+        function showAlertError(msg) {
+            $("#danger-alert").text(msg);
+            $("#danger-alert").fadeTo(2000, 500).slideUp(500, function () {
+                $("#danger-alert").slideUp(500);
+            });
+        }
+    </script>
 </head>
 <body>
     <form runat="server">
@@ -36,6 +60,8 @@
                 <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
                 <asp:ScriptReference Name="WebFormsBundle" />
                 <%--Site Scripts--%>
+                <asp:ScriptReference Path="Scripts/moment.min.js" />
+                <asp:ScriptReference Path="Scripts/bootstrap-datetimepicker.min.js" />
             </Scripts>
         </asp:ScriptManager>
 
@@ -57,7 +83,9 @@
                 </div>
             </div>
         </div>
-        <div class="container body-content">
+        <div class="container body-content navbar-fixed-bott" style="padding-top: 70px">
+            <div class="alert alert-success" id="success-alert"></div>
+            <div class="alert alert-danger" id="danger-alert"></div>
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <hr />

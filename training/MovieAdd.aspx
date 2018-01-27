@@ -1,21 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="MovieAdd.aspx.cs" Inherits="training.MovieAdd" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <style>
-        div#success-alert, div#danger-alert {
-            width: 80%;
-            position: fixed;
-            margin: 5% auto;
-            left: 0;
-            right: 0;
-            display: none;
-        }
-    </style>
-    <div class="alert alert-success" id="success-alert"></div>
-    <div class="alert alert-danger" id="danger-alert"></div>
     <div class="row">
-        <div class="col">
-            <div class="panel panel-default" style="margin-top: 15px">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="panel panel-default">
                 <div class="panel-heading">Movie Form</div>
                 <div class="panel-body">
                     <div class="form-group">
@@ -24,7 +13,12 @@
                     </div>
                     <div class="form-group">
                         <asp:Label Text="เช้าฉายเมื่อ" Font-Bold="true" runat="server" />
-                        <asp:TextBox ID="txtDate" ReadOnly="true" runat="server" CssClass="form-control" Style="background-color: unset" />
+                        <div class='input-group date' id='dtDate'>
+                            <input type='text' class="form-control" id="txtDate" runat="server" style="background-color: unset;" readonly />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
                     </div>
                     <div class="form-group">
                         <asp:Label Text="หมวดหมู่" Font-Bold="true" runat="server" />
@@ -41,14 +35,26 @@
                         <asp:Label Text="รูปภาพ" Font-Bold="true" runat="server" />
                         <asp:FileUpload ID="fuCoverImg" runat="server" CssClass="form-control" AllowMultiple="false" />
                     </div>
-                    <asp:Button Text="Submit" runat="server" class="btn btn-primary" ID="btnSubmit" OnClick="btnSubmit_Click" OnClientClick="return submitClick();" />
+                    <asp:Button
+                        Text="Submit"
+                        runat="server"
+                        class="btn btn-primary"
+                        ID="btnSubmit"
+                        OnClick="btnSubmit_Click"
+                        OnClientClick="return submitClick();" />
                 </div>
             </div>
         </div>
+        <div class="col-md-3"></div>
     </div>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" />
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
     <script type="text/javascript">
+        $(function () {
+            $('#dtDate').datetimepicker({
+                format: 'YYYY/MM/DD',
+                ignoreReadonly: true,
+                defaultDate: new Date()
+            });
+        });
         function submitClick() {
             if (!$('#MainContent_txtTitle').val()) {
                 showAlertError('กรุณากรอกข้อมูลชื่อภาพยนต์');
@@ -67,22 +73,5 @@
                 return false;
             }
         }
-        function showAlertSuccess(msg) {
-            $("#success-alert").text(msg);
-            $("#success-alert").fadeTo(2000, 500).slideUp(500, function () {
-                $("#success-alert").slideUp(500);
-            });
-        }
-        function showAlertError(msg) {
-            $("#danger-alert").text(msg);
-            $("#danger-alert").fadeTo(2000, 500).slideUp(500, function () {
-                $("#danger-alert").slideUp(500);
-            });
-        }
-        $(document).ready(function () {
-            $("input[id*='txtDate']").datepicker({
-                format: "yyyy/mm/dd"
-            });
-        });
     </script>
 </asp:Content>
