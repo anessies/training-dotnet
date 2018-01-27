@@ -1,11 +1,11 @@
-<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="MovieAdd.aspx.cs" Inherits="training.MovieAdd" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="MovieEdit.aspx.cs" Inherits="training.MovieEdit" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="row">
         <div class="col-md-3"></div>
         <div class="col-md-6">
             <div class="panel panel-default">
-                <div class="panel-heading">Movie Form</div>
+                <div class="panel-heading">Movie Form Edit</div>
                 <div class="panel-body">
                     <div class="form-group">
                         <asp:Label Text="ชื่อภาพยนต์" Font-Bold="true" runat="server" />
@@ -13,11 +13,13 @@
                     </div>
                     <div class="form-group">
                         <asp:Label Text="เช้าฉายเมื่อ" Font-Bold="true" runat="server" />
-                        <div class='input-group date' id='dtDate'>
-                            <input type='text' class="form-control" id="txtDate" runat="server" style="background-color: unset;" readonly />
-                            <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-calendar"></span>
-                            </span>
+                        <div class="form-group">
+                            <div class='input-group date' id='dtPicker'>
+                                <input type='text' class="form-control" id="txtDate" runat="server" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group">
@@ -34,25 +36,20 @@
                     <div class="form-group">
                         <asp:Label Text="รูปภาพ" Font-Bold="true" runat="server" />
                         <asp:FileUpload ID="fuCoverImg" runat="server" CssClass="form-control" AllowMultiple="false" />
+                        <asp:Image ID="Img" Height="100px" runat="server" Style="margin-top: 10px" />
                     </div>
-                    <asp:Button
-                        Text="Submit"
-                        runat="server"
-                        class="btn btn-primary"
-                        ID="btnSubmit"
-                        OnClick="btnSubmit_Click"
-                        OnClientClick="return submitClick();" />
+                    <asp:Button Text="Submit" runat="server" class="btn btn-primary" ID="btnSubmit" OnClick="btnSubmit_Click" OnClientClick="return submitClick();" />
                 </div>
             </div>
         </div>
         <div class="col-md-3"></div>
     </div>
+
     <script type="text/javascript">
         $(function () {
-            $('#dtDate').datetimepicker({
+            $('#dtPicker').datetimepicker({
                 format: 'YYYY/MM/DD',
-                ignoreReadonly: true,
-                defaultDate: new Date()
+                defaultDate: new Date(),
             });
         });
         function submitClick() {
@@ -66,10 +63,6 @@
             }
             if (isNaN($('#MainContent_txtDuration').val())) {
                 showAlertError('กรุณากรอกข้อมูลความยาวของภาพยนต์(นาที) เป็นตัวเลขเท่านั้น');
-                return false;
-            }
-            if (!$('#MainContent_fuCoverImg').val()) {
-                showAlertError('กรุณาเลือกรูปภาพ');
                 return false;
             }
         }

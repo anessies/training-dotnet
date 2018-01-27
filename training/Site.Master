@@ -11,6 +11,7 @@
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
+    
     <link rel="stylesheet" href="Content/bootstrap-datetimepicker.css" />
     <link rel="stylesheet" href="Content/bootstrap.css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
@@ -64,7 +65,6 @@
                 <asp:ScriptReference Path="Scripts/bootstrap-datetimepicker.min.js" />
             </Scripts>
         </asp:ScriptManager>
-
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
@@ -83,7 +83,7 @@
                 </div>
             </div>
         </div>
-        <div class="container body-content navbar-fixed-bott" style="padding-top: 70px">
+        <div class="container body-content navbar-fixed-bott" style="padding-top: 70px;">
             <div class="alert alert-success" id="success-alert"></div>
             <div class="alert alert-danger" id="danger-alert"></div>
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
@@ -93,7 +93,8 @@
                 <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>
             </footer>
         </div>
-
     </form>
+
 </body>
+
 </html>
