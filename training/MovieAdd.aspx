@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="MovieAdd.aspx.cs" Inherits="training.MovieAdd" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="MovieAdd.aspx.cs" Inherits="training.MovieAdd" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="row">
@@ -13,8 +13,8 @@
                     </div>
                     <div class="form-group">
                         <asp:Label Text="เช้าฉายเมื่อ" Font-Bold="true" runat="server" />
-                        <div class='input-group date' id='dtPicker'>
-                            <input type='text' class="form-control" id="txtDate" runat="server" />
+                        <div class='input-group date' id='dtDate'>
+                            <input type='text' class="form-control" id="txtDate" runat="server" style="background-color: unset;" readonly />
                             <span class="input-group-addon">
                                 <span class="glyphicon glyphicon-calendar"></span>
                             </span>
@@ -35,18 +35,24 @@
                         <asp:Label Text="รูปภาพ" Font-Bold="true" runat="server" />
                         <asp:FileUpload ID="fuCoverImg" runat="server" CssClass="form-control" AllowMultiple="false" />
                     </div>
-                    <asp:Button Text="Submit" runat="server" class="btn btn-primary" ID="btnSubmit" OnClick="btnSubmit_Click" OnClientClick="return submitClick();" />
+                    <asp:Button
+                        Text="Submit"
+                        runat="server"
+                        class="btn btn-primary"
+                        ID="btnSubmit"
+                        OnClick="btnSubmit_Click"
+                        OnClientClick="return submitClick();" />
                 </div>
             </div>
         </div>
         <div class="col-md-3"></div>
     </div>
-
     <script type="text/javascript">
         $(function () {
-            $('#dtPicker').datetimepicker({
+            $('#dtDate').datetimepicker({
                 format: 'YYYY/MM/DD',
-                defaultDate: new Date(),
+                ignoreReadonly: true,
+                defaultDate: new Date()
             });
         });
         function submitClick() {

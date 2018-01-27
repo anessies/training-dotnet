@@ -15,7 +15,7 @@ namespace training
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)
@@ -37,6 +37,12 @@ namespace training
                 if (!int.TryParse(txtDuration.Text, out numDuration))
                 {
                     showAlertError("alertDurNotNumErr", "กรุณากรอกความยาว(นาที) ให้เป็นตัวเลขเท่านั้น");
+                    return;
+                }
+                numDuration = int.Parse(txtDuration.Text);
+                if (numDuration > 200)
+                {
+                    showAlertError("alertMoreThen200Min", "กรุณากรอกความยาว(นาที) น้อยกว่า 200 นาที");
                     return;
                 }
                 if (!fuCoverImg.HasFile)

@@ -11,13 +11,11 @@
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
-
-    <%--<webopt:BundleReference runat="server" Path="~/Content" />--%>
-    <link href="Content/bootstrap.css" rel="stylesheet" />
+    
     <link rel="stylesheet" href="Content/bootstrap-datetimepicker.css" />
     <link rel="stylesheet" href="Content/bootstrap.css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    <style type="text/css">
+    <style>
         div#success-alert, div#danger-alert {
             width: 80%;
             position: fixed;
@@ -25,7 +23,7 @@
             left: 0;
             right: 0;
             display: none;
-            z-index: 1;
+            z-index: 100;
         }
     </style>
     <script type="text/javascript">
@@ -65,7 +63,6 @@
                 <%--Site Scripts--%>
                 <asp:ScriptReference Path="Scripts/moment.min.js" />
                 <asp:ScriptReference Path="Scripts/bootstrap-datetimepicker.min.js" />
-                <asp:ScriptReference Path="~/Scripts/modernizer-2.6.2.js" />
             </Scripts>
         </asp:ScriptManager>
         <div class="navbar navbar-inverse navbar-fixed-top">
