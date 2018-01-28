@@ -10,7 +10,7 @@
 namespace training {
     
     
-    public partial class MovieAdd {
+    public partial class MovieAdd1 {
         
         /// <summary>
         /// txtTitle control.

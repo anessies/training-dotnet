@@ -11,7 +11,7 @@ using training.Repositories;
 
 namespace training
 {
-    public partial class MovieAdd : BasePage
+    public partial class MovieAdd1 : BasePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
