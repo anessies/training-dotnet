@@ -56,13 +56,5 @@ namespace training
                 showAlertError("alertErr", ex.Message);
             }
         }
-
-        protected void btnEdit_Click(object sender, EventArgs e)
-        {
-            var btnEdit = (Button)sender;
-            var row = (GridViewRow)btnEdit.NamingContainer;
-            int id = int.Parse(row.Cells[0].Text);
-            Response.Redirect("~/MovieEdit.aspx?id=" + id);
-        }
     }
 }
