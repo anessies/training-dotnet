@@ -228,7 +228,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="MovieAdd.aspx" />
-    <Content Include="MovieEdit.aspx" />
+    <Content Include="MovieAdd1.aspx" />
     <Content Include="MovieList.aspx" />
     <Content Include="Scripts\bootstrap-datetimepicker.js" />
     <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
@@ -310,12 +310,12 @@
     <Compile Include="MovieAdd.aspx.designer.cs">
       <DependentUpon>MovieAdd.aspx</DependentUpon>
     </Compile>
-    <Compile Include="MovieEdit.aspx.cs">
-      <DependentUpon>MovieEdit.aspx</DependentUpon>
+    <Compile Include="MovieAdd1.aspx.cs">
+      <DependentUpon>MovieAdd1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="MovieEdit.aspx.designer.cs">
-      <DependentUpon>MovieEdit.aspx</DependentUpon>
+    <Compile Include="MovieAdd1.aspx.designer.cs">
+      <DependentUpon>MovieAdd1.aspx</DependentUpon>
     </Compile>
     <Compile Include="MovieList.aspx.cs">
       <DependentUpon>MovieList.aspx</DependentUpon>
